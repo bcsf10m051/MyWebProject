@@ -1,0 +1,136 @@
+@model List<Virssa.Models.ad>
+
+
+@{
+    Layout = "~/Views/Shared/_Layout2.cshtml";
+}
+
+@{
+    ViewBag.Title = "Ads for Sale";
+}
+
+@Scripts.Render("~/bundles/jquery")
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("#searchbtn").click(function () {
+            var countryId = $("#search").val();
+
+            $("#bd1").children().remove();
+
+
+            $.getJSON("/Products/ProductsAfterSearch?item=" + countryId, function (data) {
+                $("#bd1").append('  <section class="header_text sub"><h4><span>Search Results</span></h4></section>')
+                $.each(data, function (i, item) {
+
+                    $("#bd1").append('<br /><br /><div class="row"><div class="span8"><div class="row"><div class="span8">');
+                    $("#bd1").append('<p style="font-family:arial;color:blue;font-size:x-large;"><strong>Title : ' + item.title + '</strong></p></div></div>');
+                    $("#bd1").append(' <div class="row"><div class="span3"><a class="thumbnail"><img src="' + item.photo + '" alt="' + item.title +'"></a></div><div class="span6"> <p style="font-family:arial;color:blue;font-size:14px;">Ad Description</p>' + item.description + '</p></div></div>');
+                    $("#bd1").append('<div class="row"><div class="span8"><p><p style="font-family:arial;color:blue;font-size:14px;">Ad Info</p>');
+                    $("#bd1").append('<i class="icon-tags"></i>Ad by : <span class="label label-info">' + item.contactName + '</span>');
+                    $("#bd1").append('<i class="icon-tags"></i>Contact No : <span class="label label-info">' + item.phone + '</span>');
+                    $("#bd1").append('<i class="icon-tags"></i>Price : <span class="label label-info">' + item.price + '</span><br /><br />');
+                    $("#bd1").append('  <p style="font-family:arial;color:blue;font-size:14px;">Contact Info</p><i class="icon-tags"></i>Location : <span class="label label-info">' + item.location + '</span>');
+                    $("#bd1").append('<i class="icon-tags">    </i>Email : <span class="label label-warning">' + item.email + '</span><i class="icon-tags">    </i>Address : <span class="label label-warning">' + item.address + '</span>')
+                    $("bd1").append('</div></div></div></div><hr>')
+
+                });
+
+            });
+
+        });
+
+    });
+</script>
+
+
+
+
+
+<div id="body1">
+    <div class="span4">
+        <div class="control-group">
+
+            <label class="control-label" for="loc">
+                <h3>Search</h3>
+            </label>
+
+
+            <div class="input-append">
+                <input type="text" class="span2" id="search" placeholder="Search the Ad">
+                <button type="submit" class="btn" id="searchbtn">Search</button>
+            </div>
+
+        </div>
+
+    </div>
+
+
+
+
+
+
+
+    @foreach (var item in Model)
+    {       
+       
+        
+        <div class="row">
+            <div class="span8">
+                <div class="row">
+                    <div class="span8">
+                        <p style="font-family: arial; color: blue; font-size: x-large;"><strong>Title : @item.title</strong></p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="span3">
+
+                        <img src="@item.photo" alt="" class="thumbnail">
+                    </div>
+                    <div class="span6">
+                        <p style="font-family: arial; color: blue; font-size: 14px;">Ad Description</p>
+                        <p>
+                            @item.description
+                        </p>
+
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="span8">
+
+                        <p>
+                            <p style="font-family: arial; color: blue; font-size: 14px;">Ad Info</p>
+                            <i class="icon-tags"></i>Ad by : <span class="label label-info">@item.contactName</span>
+                            <i class="icon-tags"></i>Contact No : <span class="label label-info">@item.phone</span>
+                            <i class="icon-tags"></i>Price : <span class="label label-info">@item.price</span><br />
+                            <br />
+
+                            <p style="font-family: arial; color: blue; font-size: 14px;">Contact Info</p>
+                            <i class="icon-tags"></i>Location : <span class="label label-info">@item.location</span>
+                            <i class="icon-tags"></i>Email : <span class="label label-warning">@item.email</span>
+                            <i class="icon-tags"></i>Address : <span class="label label-warning">@item.address</span>
+
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <hr>
+        
+    }
+
+
+
+
+
+
+
+    <section class="header_text sub">
+        <h4><span>New products</span></h4>
+    </section>
+
+
+
+    <script src="~/Scripts/common.js"></script>
+</div>
+

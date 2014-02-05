@@ -1,0 +1,123 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <!--[if ie]><meta content='IE=8' http-equiv='X-UA-Compatible'/><![endif]-->
+    <!-- bootstrap -->
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet">
+    <link href="~/Content/bootstrap-responsive.min.css" rel="stylesheet">
+    <link href="~/Content/bootstrappage.css" rel="stylesheet" />
+    <link href="~/Content/custom.css" rel="stylesheet">
+    <!-- global styles -->
+    <link href="~/Content/flexslider.css" rel="stylesheet" />
+    <link href="~/Content/main.css" rel="stylesheet" />
+
+    <!-- scripts -->
+    <script src="~/Scripts/jquery-1.7.2.min.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    <script src="~/Scripts/superfish.js"></script>
+    <script src="~/Scripts/jquery.scrolltotop.js"></script>
+    <!--[if lt IE 9]>			
+			<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+			<script src="js/respond.min.js"></script>
+		<![endif]-->
+</head>
+<body>
+    <div id="top-bar" class="container">
+        <div class="row">
+            <div class="span4">
+                <form class="form-search">
+                </form>
+
+            </div>
+            <div class="span8">
+                <div class="account ">
+
+                    <form action="/PostAd/afterLoginPostAd">
+                        <input type="submit" class="btn btn-warning btn-default navbar-btn pull-right" value="Post a Free Ad" />
+                    </form>
+                    <form action="/Registration/logout">
+                        <input type="submit" class="btn btn-success btn-default navbar-btn pull-right" value="Logout" />
+                    </form>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="wrapper" class="container">
+        <section class="navbar main-menu">
+            <div class="navbar-inner main-menu">
+                <a href="/Registration/afterLoginIndex" class="logo pull-left">
+                    <img src="~/Images/logo.png" class="site_logo" alt=""></a>
+                <nav id="menu" class="pull-right">
+                    <ul>
+                        <li><a href="/Registration/afterLoginIndex">Home</a>
+
+                        </li>
+                        <li><a href="/Products/AfterLoginproducts">For Sale </a></li>
+                        <li><a href="~/Home/AfterLoginAboutUs">About Us</a>
+
+                        </li>
+                        <li><a href="~/Home/afterLoginContact">Contact Us</a></li>
+                        <li><a href="/Products/userProducts">Your Ads</a></li>
+
+                    </ul>
+                </nav>
+            </div>
+        </section>
+        <section class="header_text sub">
+            <img class="pageBanner" src="~/Images/pageBanner.png" alt="New products">
+        </section>
+        <div id="bd1">
+            @RenderBody()
+        </div>
+        <section id="footer-bar">
+            <div class="row">
+                <div class="span3">
+                    <h4>Navigation</h4>
+                    <ul class="nav">
+                        <li><a href="/Registration/afterLoginIndex">Homepage</a></li>
+                        <li><a href="/Home/AfterLoginAboutUs">About Us</a></li>
+                        <li><a href="~/Home/afterLoginContact">Contact Us</a></li>
+                    </ul>
+                </div>
+                <div class="span4">
+                    <h4>My Account</h4>
+                    <ul class="nav">
+                        <li><a href="#">My Account</a></li>
+                        <li><a href="#">Wish List</a></li>
+                        <li><a href="#">Newsletter</a></li>
+                    </ul>
+                </div>
+                <div class="span5">
+                    <p class="logo">
+                        <img src="~/Images/logo.png" class="site_logo" alt="">
+                    </p>
+                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. the  Lorem Ipsum has been the industry's standard dummy text ever since the you.</p>
+                    <br />
+                    <span class="social_icons">
+                        <a class="facebook" href="#">Facebook</a>
+                        <a class="twitter" href="#">Twitter</a>
+                        <a class="skype" href="#">Skype</a>
+                        <a class="vimeo" href="#">Vimeo</a>
+                    </span>
+                </div>
+            </div>
+        </section>
+        <section id="copyright">
+            <span>Copyright 2013 GetCustomers.com  All right reserved.</span>
+        </section>
+    </div>
+    <script src="~/Scripts/common.js"></script>
+</body>
+</html>
+

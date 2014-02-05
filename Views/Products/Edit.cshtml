@@ -1,0 +1,79 @@
+@model  Virssa.Models.ad
+
+@{
+    ViewBag.Title = "Modify Your Ads";
+}
+@{
+    Layout = "~/Views/Shared/_Layout2.cshtml";
+}
+@using (Html.BeginForm())
+{
+   
+
+    <fieldset>
+        <legend>Edit Your Ad</legend>
+
+        @Html.HiddenFor(model => model.Id)
+        @Html.HiddenFor(model => model.photo)
+
+        @Html.HiddenFor(model => model.email)
+
+
+        <div class="editor-label">
+            <p>New Title : </p>
+        </div>
+        <div class="editor-field">
+            @Html.TextBoxFor(model => model.title)
+            @Html.ValidationMessageFor(m => m.title)
+        </div>
+
+        <div class="editor-label">
+            <p>New Price : </p>
+        </div>
+        <div class="editor-field">
+            @Html.TextBoxFor(model => model.price)
+            @Html.ValidationMessageFor(m => m.price)
+        </div>
+
+        <div class="editor-label">
+            <p>New Description : </p>
+        </div>
+        <div class="editor-field">
+            @Html.TextAreaFor(model => model.description)
+            @Html.ValidationMessageFor(m => m.description)
+
+        </div>
+        <div class="editor-label">
+            <p>New Contact Number : </p>
+        </div>
+        <div class="editor-field">
+            @Html.TextBoxFor(model => model.phone)
+            @Html.ValidationMessageFor(m => m.phone)
+        </div>
+        <div class="editor-label">
+            <p>New Contact Name : </p>
+        </div>
+        <div class="editor-field">
+            @Html.TextBoxFor(model => model.contactName)
+            @Html.ValidationMessageFor(m => m.contactName)
+        </div>
+        <div class="editor-label">
+            <p>New Location : </p>
+        </div>
+        <div class="editor-field">
+            @Html.TextBoxFor(model => model.location)
+            @Html.ValidationMessageFor(m => m.location)
+        </div>
+        <div class="editor-label">
+            <p>New Address : </p>
+        </div>
+        <div class="editor-field">
+            @Html.TextBoxFor(model => model.address)
+            @Html.ValidationMessageFor(m => m.address)
+        </div>
+        <p>
+            <input class="btn btn-success" type="submit" value="Edit" />
+        </p>
+    </fieldset>
+}
+@Scripts.Render("~/bundles/jqueryval")

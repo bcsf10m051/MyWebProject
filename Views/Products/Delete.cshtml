@@ -1,0 +1,59 @@
+﻿@model  Virssa.Models.ad
+
+@{
+    ViewBag.Title = "Delete Your Ads";
+}
+@{
+    Layout = "~/Views/Shared/_Layout2.cshtml";
+}
+
+@using (Html.BeginForm())
+{@Html.HiddenFor(model => model.Id)
+   
+
+    <div class="row">
+        <div class="span8">
+            <div class="row">
+                <div class="span8">
+                    <p style="font-family: arial; color: blue; font-size: x-large;"><strong>Title : @Model.title</strong></p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="span3">
+
+                    <img src="@Model.photo" alt="" class="thumbnail">
+                </div>
+                <div class="span6">
+                    <p style="font-family: arial; color: blue; font-size: 14px;">Ad Description</p>
+                    <p>
+                        @Model.description
+                    </p>
+
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="span8">
+
+                    <p>
+                        <p style="font-family: arial; color: blue; font-size: 14px;">Ad Info</p>
+                        <i class="icon-tags"></i>Ad by : <span class="label label-info">@Model.contactName</span>
+                        <i class="icon-tags"></i>Contact No : <span class="label label-info">@Model.phone</span>
+                        <i class="icon-tags"></i>Price : <span class="label label-info">@Model.price</span><br />
+                        <br />
+
+                        <p style="font-family: arial; color: blue; font-size: 14px;">Contact Info</p>
+                        <i class="icon-tags"></i>Location : <span class="label label-info">@Model.location</span>
+
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <hr>
+
+    <p>
+        <input type="submit" class="btn btn-warning btn-default navbar-btn" value="Delete" />
+    </p>
+
+}

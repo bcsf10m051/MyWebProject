@@ -1,0 +1,131 @@
+﻿@model Virssa.Models.ad
+@{
+    ViewBag.Title = "Post Your Ad";
+}
+@{
+    Layout = "~/Views/Shared/_Layout2.cshtml";
+}
+<form class="form-horizontal" action='/PostAd/postAdAfterLogin' method="POST" enctype="multipart/form-data">
+
+    <fieldset>
+        <div id="legend">
+            <legend class="">Post a Free Ad</legend>
+        </div>
+        <div class="control-group">
+            <!-- Username -->
+            @*@Html.LabelFor(m => m.title, new { @class = "control-label" })*@
+            <label class="control-label" for="username">Ad Title</label>
+            <div class="controls">
+
+                @Html.TextBoxFor(m => m.title, new { placeholder = "Enter Ad Title", type = "text" })
+                @Html.ValidationMessageFor(m => m.title)
+
+                <p class="help-block">Give your ad a catchy Title</p>
+            </div>
+        </div>
+
+        <div class="control-group">
+            <!-- E-mail -->
+            <label class="control-label" for="photo">Photo</label>
+            <div class="controls">
+
+                @Html.TextBoxFor(m => m.photo, new { placeholder = "Enter Ad Title", type = "file" })
+                @Html.ValidationMessageFor(m => m.photo)
+                <p class="help-block">Please provide your Ad photo</p>
+            </div>
+        </div>
+
+        <div class="control-group">
+
+            <label class="control-label" for="textarea">Describe what makes your ad unique</label>
+            <div class="controls">
+                @*<textarea class="form-control" rows="3" name ="description"></textarea>*@
+                @Html.TextAreaFor(m => m.description, new { placeholder = "Enter Ad Description", rows = "3" })
+                @Html.ValidationMessageFor(m => m.description)
+            </div>
+        </div>
+
+        <div class="control-group">
+            <!-- Password -->
+            <label class="control-label" for="price">Price</label>
+            <div class="controls">
+                @* <input type="text"  name="price"  class="input-xlarge" />*@
+                @Html.TextBoxFor(m => m.price, new { placeholder = "Enter product Price", type = "text" })
+                @Html.ValidationMessageFor(m => m.price)
+                <p class="help-block">Pakistani Rupees</p>
+            </div>
+        </div>
+
+
+    </fieldset>
+
+
+
+
+
+    <fieldset>
+        <div id="legend">
+            <legend class="">Seller Information</legend>
+        </div>
+        <div class="control-group">
+            <!-- Username -->
+            <label class="control-label" for="username">Contact Name</label>
+            <div class="controls">
+                @Html.TextBoxFor(m => m.contactName, new { placeholder = "Enter Your Name", type = "text" })
+                @Html.ValidationMessageFor(m => m.contactName)
+            </div>
+        </div>
+
+        <div class="control-group">
+            <!-- E-mail -->
+            <label class="control-label" for="email">E-mail</label>
+            <div class="controls">
+                @Html.TextBoxFor(m => m.email, new { placeholder = "Enter Your Email", type = "text" })
+                @Html.ValidationMessageFor(m => m.email)
+                <p class="help-block">Your E-mail would not be shared</p>
+            </div>
+        </div>
+
+        <div class="control-group">
+            <!-- Password-->
+            <label class="control-label" for="phone">Phone Number</label>
+            <div class="controls">
+                @Html.TextBoxFor(m => m.phone, new { placeholder = "Enter Contact Number", type = "text" })
+                @Html.ValidationMessageFor(m => m.phone)
+
+            </div>
+        </div>
+
+        <div class="control-group">
+
+            <label class="control-label" for="loc">Location</label>
+            <div class="controls">
+                <select class="form-control" name="location">
+                    <option>Lahore</option>
+                    <option>Karachi</option>
+                    <option>Multan</option>
+                    <option>Islamabad</option>
+                    <option>Kashmir</option>
+                </select>
+            </div>
+        </div>
+        <div class="control-group">
+
+            <label class="control-label" for="address">Ad Address</label>
+            <div class="controls">
+                @Html.TextBoxFor(m => m.address, new { placeholder = "Enter Your Address", type = "text" })
+                @Html.ValidationMessageFor(m => m.address)
+
+            </div>
+        </div>
+        <div class="control-group">
+            <!-- Button -->
+            <div class="controls">
+
+                <input type="submit" class="btn btn-success" value="Post Ad" />
+
+            </div>
+        </div>
+    </fieldset>
+</form>
+@Scripts.Render("~/bundles/jqueryval")
