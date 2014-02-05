@@ -1,0 +1,132 @@
+@model Virssa.Models.registerdUser
+@{
+        
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@Scripts.Render("~/bundles/jquery")
+@{
+    ViewBag.Title = "Login/SignUp";
+}
+<script>
+
+    $(document).ready(function () {
+
+
+
+        $('#b1').click(function () {
+
+            var userName = $('#username1').val();
+
+            $.getJSON("/registration/CheckUserName?UserName=" + userName, function (data) {
+
+                if (data) {
+                    $('#result').text("User already exists in database");
+
+                }
+                else {
+                    $('#result').text("User Name is available");
+                }
+            });
+
+        });
+
+    });
+</script>
+
+
+<h4><span>Login or Regsiter</span></h4>
+
+<section class="main-content">
+    <div class="row">
+        <div class="span5">
+            <h4 class="title"><span class="text"><strong>Login</strong> Form</span></h4>
+            <form action="/registration/loginUser" method="post">
+                <input type="hidden" name="next" value="/">
+                <fieldset>
+                    <div class="control-group">
+
+                        <label class="control-label">Username</label>
+                        <div class="controls">
+                            @*<input type="text" placeholder="Enter your username" name="username" class="input-xlarge form-control">*@
+                            <input data-val="true" data-val-required="UserName must be Required" id="username" name="username" placeholder="Enter User Name" type="text" value="" />
+                            <span class="field-validation-valid" data-valmsg-for="username" data-valmsg-replace="true"></span>
+
+                        </div>
+
+                    </div>
+                    <div class="control-group">
+                        <label class="control-label">Password</label>
+                        <div class="controls">
+                            @*<input type="password" placeholder="Enter your password" name="password" class="input-xlarge">*@
+                            <input data-val="true" data-val-required="Password must be Required" id="password" name="password" placeholder="Enter Your Password" type="password" value="" />
+                            <span class="field-validation-valid" data-valmsg-for="password" data-valmsg-replace="true"></span>
+
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <input tabindex="3" class="btn btn-inverse large" type="submit" value="Sign into your account">
+                        <hr>
+                    </div>
+                </fieldset>
+            </form>
+        </div>
+        <div class="span7">
+            <h4 class="title"><span class="text"><strong>Register</strong> Form</span></h4>
+            <form action="/registration/registerUser" method="post" class="form-stacked">
+                <fieldset>
+                    <div class="control-group">
+                        <label class="control-label">Username</label>
+                        <div class="controls">
+                            @*<input type="text" placeholder="Enter your username" class="input-xlarge" name="username" id="username">*@
+                            @*@Html.TextBoxFor(m => m.username, new { placeholder = "Enter User Name", type = "text" })*@
+                            @*@Html.ValidationMessageFor(model => model.username)*@
+
+                            <input data-val="true" data-val-required="User Name must be Required" id="username1" name="username" placeholder="Enter User Name" type="text" value="" />
+                            <span class="field-validation-valid" data-valmsg-for="username" data-valmsg-replace="true"></span>
+
+                            <input type="button" id="b1" class="btn btn-inverse" value="Check Availability" />
+                            <div id="result" style="font-family:arial;color:blue;font-size:14px;"></div>
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <label class="control-label">Email address:</label>
+                        <div class="controls">
+                            @*<input type="text" placeholder="Enter your email" class="input-xlarge" name="email">*@
+
+                            @Html.TextBoxFor(m => m.email, new { placeholder = "Enter Your Email", type = "text" })
+                            @Html.ValidationMessageFor(model => model.email)
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <label class="control-label">Password:</label>
+                        <div class="controls">
+                            @*<input type="password" placeholder="Enter your password" class="input-xlarge" name="password">*@
+                            @Html.TextBoxFor(m => m.password, new { placeholder = "Enter Your Password", type = "password" })
+                            @Html.ValidationMessageFor(model => model.password)
+
+                        </div>
+                    </div>
+
+                    <hr>
+                    <div class="actions">
+                        <input tabindex="9" class="btn btn-inverse large" type="submit" value="Create your account">
+                    </div>
+                </fieldset>
+            </form>
+        </div>
+    </div>
+</section>
+
+
+
+<script src="~/Scripts/common.js"></script>
+<script>
+    $(document).ready(function () {
+        $('#checkout').click(function (e) {
+            document.location.href = "/Home/checkout";
+        })
+    });
+</script>
+
+@Scripts.Render("~/bundles/jqueryval")
