@@ -17,7 +17,7 @@
 
         $('#b1').click(function () {
 
-            var userName = $('#username').val();
+            var userName = $('#username1').val();
 
             //alert('User Name ='+ userName);
 
@@ -85,9 +85,12 @@
                         <label class="control-label">Username</label>
                         <div class="controls">
                             @*<input type="text" placeholder="Enter your username" class="input-xlarge" name="username" id="username">*@
-                            @Html.TextBoxFor(m => m.username, new { placeholder = "Enter User Name", type = "text" })
-                            @Html.ValidationMessageFor(model => model.username)
-                            <input type="button" id="b1" value="Check Availability" /><div id="result"></div>
+                            @*@Html.TextBoxFor(m => m.username, new { placeholder = "Enter User Name", type = "text" })*@
+                            @*@Html.ValidationMessageFor(model => model.username)*@
+                             <input data-val="true" data-val-required="User Name must be Required" id="username1" name="username" placeholder="Enter User Name" type="text" value="" />
+                            <span class="field-validation-valid" data-valmsg-for="username" data-valmsg-replace="true"></span>
+                            <input type="button" id="b1"  class="btn btn-inverse" value="Check Availability" />
+                            <div id="result" style="font-family:arial;color:blue;font-size:14px;"></div>
                         </div>
                     </div>
                     <div class="control-group">
